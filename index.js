@@ -9,12 +9,12 @@ async function promptUser() {
         return inquirer.prompt ([
             {
                 type: "input",
-                message: "Title?",
+                message: "Title",
                 name: "title"
             },
             {
                 type: "input",
-                message: "Description?",
+                message: "Description",
                 name: "description"
             },
             {
@@ -53,11 +53,37 @@ async function promptUser() {
    
    
 }
-function generateHTML(answers){};                                           
+function formatAnswers(answers){
+    return `#Title 
+    
+${answers.title}
+## Description
+${answers.description}
+##Table of Contents
+    * Installation
+    * usage
+    * Credits
+    * License
+    * Tests
+    * Questions
+    * 
+## Installation
+${answers.installation}
+## Usage
+${answers.usage}
+## Credits
+${answers.contributors}
+## License
+${answers.license}
+## Tests
+${answers.tests}
+## Questions
+${answers.questions}`
+};                                           
 promptUser()
 .then(function (answers) {
-    const formatAnswers = generateHTML(answers);
-   return writeFileAsync('index.html', answers)
+    const formatedAnswers = formatAnswers(answers);
+   return writeFileAsync('README.md', formatedAnswers)
 .then(function() {
     console.log("Successfully wrote to index.html");
   })
