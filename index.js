@@ -56,28 +56,28 @@ async function promptUser() {
 function formatAnswers(answers){
     return `#Title 
     
-${answers.title}
+${answers.title}\n
 ## Description
-${answers.description}
+${answers.description}\n
 ##Table of Contents
     * Installation
     * usage
     * Credits
     * License
     * Tests
-    * Questions
-    * 
-## Installation
-${answers.installation}
-## Usage
-${answers.usage}
-## Credits
-${answers.contributors}
-## License
-${answers.license}
-## Tests
-${answers.tests}
-## Questions
+    * Questions\n
+    
+## Installation\n
+${answers.installation}\n
+## Usage\n
+${answers.usage}\n
+## Credits\n
+${answers.contributors}\n
+## License\n
+${answers.license}\n
+## Tests\n
+${answers.tests}\n
+## Questions\n
 ${answers.questions}`
 };                                           
 promptUser()
