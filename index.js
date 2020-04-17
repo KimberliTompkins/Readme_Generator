@@ -2,6 +2,18 @@ const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer")
 
+// const { BadgeFactory } = require('gh-badges')
+// 
+// const bf = new BadgeFactory()
+// 
+// const format = {
+//   text: ['build', 'passed'],
+//   color: 'green',
+//   template: 'flat',
+// }
+// 
+// const svg = bf.create(format)
+// 
 const writeFileAsync = util.promisify(fs.writeFileSync);
 
 async function promptUser() {
@@ -19,6 +31,11 @@ async function promptUser() {
             },
             {
                 type: "input",
+                message: "Repo Link",
+                name: "repo"
+            },
+            {
+                type: "input",
                 message: "Installation",
                 name: "installation"
             },
@@ -28,11 +45,9 @@ async function promptUser() {
                 name: "usage"
             },
             {
-                type: "list",
+                type: "input",
                 message: "License",
-                name: "license",
-                choices: ["Apache","MIT","Mozilla"],
-                default: " "
+                name: "license"
             },
             {
                 type: "input",
@@ -54,18 +69,19 @@ async function promptUser() {
    
 }
 function formatAnswers(answers){
-    return `#Title 
-    
-${answers.title}\n
-## Description
+    return `
+# Title    
+## **${answers.title}**\n
+${answers.repo}\n
+## *Description* \n
 ${answers.description}\n
-##Table of Contents
-    * Installation
-    * usage
-    * Credits
-    * License
-    * Tests
-    * Questions\n
+## Table of Contents
+    1. Installation
+    2. usage
+    3. Credits
+    4. License
+    5. Tests
+    6. Questions\n
     
 ## Installation\n
 ${answers.installation}\n
